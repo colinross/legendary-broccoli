@@ -67,6 +67,19 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: data; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.data (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    name character varying,
+    value jsonb,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -84,6 +97,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: data data_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.data
+    ADD CONSTRAINT data_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -98,6 +119,7 @@ ALTER TABLE ONLY public.schema_migrations
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20180906202100');
+('20180906202100'),
+('20180906204643');
 
 
