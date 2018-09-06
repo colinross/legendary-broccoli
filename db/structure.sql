@@ -306,7 +306,8 @@ CREATE TABLE public.data (
     name character varying,
     value jsonb,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    log_data jsonb
 );
 
 
@@ -344,6 +345,13 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: data logidze_on_data; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER logidze_on_data BEFORE INSERT OR UPDATE ON public.data FOR EACH ROW WHEN ((COALESCE(current_setting('logidze.disabled'::text, true), ''::text) <> 'on'::text)) EXECUTE PROCEDURE public.logidze_logger('null', 'updated_at');
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -353,6 +361,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180906202100'),
 ('20180906204643'),
 ('20180906210034'),
-('20180906210035');
+('20180906210035'),
+('20180906210131');
 
 
