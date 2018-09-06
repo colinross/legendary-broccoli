@@ -34,6 +34,7 @@ module Elucidata
     config.generators do |g|
       g.assets = false
       g.helper = false
+      g.orm :active_record, primary_key_type: :uuid
     end
 
     config.action_controller.include_all_helpers = false
