@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
 import Home from '../home'
-import About from '../about'
+import Data from '../data'
 
 const App = () => (
   <div>
@@ -12,7 +12,7 @@ const App = () => (
 
     <main>
       <Route exact path="/" component={Home} />
-      <Route exact path="/data" component={About} />
+      <Route exact path="/data" component={Data} />
     </main>
   </div>
 )

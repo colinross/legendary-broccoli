@@ -6,16 +6,15 @@ import { connect } from 'react-redux'
 const Home = props => (
   <div>
     <h1>Home</h1>
-    <p>Welcome home!</p>
-    <button onClick={() => props.changePage()}>Go to about page via redux</button>
+    <button onClick={() => props.dataPage()}>Go to Data!</button>
   </div>
 )
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  changePage: () => push('/about-us')
+  dataPage: () => push('/data')
 }, dispatch)
 
 export default connect(
-  null, 
+  null,
   mapDispatchToProps
 )(Home)
